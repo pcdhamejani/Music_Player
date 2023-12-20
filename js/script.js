@@ -8,19 +8,24 @@ const music = document.querySelector("audio");
 
 const songs = [
   {
-    name: "onelove",
     title: "One Love",
     artist: "Shubh",
   },
   {
-    name: "bhardojolimeri",
-    title: "Bhar Do Joli Meri",
-    artist: "Adnan Sami",
-  },
-  {
-    name: "withyou",
     title: "With You",
     artist: "AP Dhilon",
+  },
+  {
+    title: "Kesariya",
+    artist: "Arijit Singh",
+  },
+  {
+    title: "Faded",
+    artist: "Alan Walker",
+  },
+  {
+    title: "Metamorphosis",
+    artist: "INTERWORLD",
   },
 ];
 
@@ -44,8 +49,8 @@ play.addEventListener("click", () => {
 const loadSong = (songs) => {
   title.textContent = songs.title;
   artist.textContent = songs.artist;
-  music.src = "music/" + songs.name + ".mp3";
-  img.src = "images/" + songs.name + ".jpg";
+  music.src = "music/" + songs.title + ".mp3";
+  img.src = "images/" + songs.title + ".jpg";
 };
 
 let songIndex = 0;
@@ -54,7 +59,6 @@ const nextSong = () => {
   songIndex = (songIndex + 1) % songs.length;
   loadSong(songs[songIndex]);
   playMusic();
-  playNextIfEnded();
 };
 
 const prevSong = () => {
@@ -63,23 +67,5 @@ const prevSong = () => {
   playMusic();
 };
 
-const playNextIfEnded = () => {
-  if (music.ended) {
-    nextSong();
-  }
-};
-
 next.addEventListener("click", nextSong);
 prev.addEventListener("click", prevSong);
-
-// let volume = document.getElementById("volume-slider");
-// volume.addEventListener("change", function (e) {
-//   music.volume = e.currentTarget.value / 100;
-// });
-
-// const value = document.getElementById("vol_value");
-// const input = document.getElementById("volume_slider");
-// value.textContent = input.value;
-// input.addEventListener("change", (event) => {
-//   value.textContent = event.currentTarget.value;
-// });
